@@ -1,0 +1,64 @@
+{
+	"products": [
+	{
+		"id" : "1",
+		"name": "Cream Lip Stain",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_29578_SephoraCollection_WEB_3ac405bdae1eee7923699755de2d356b7d1a424a_1523791296.png",
+		"price": "5.7"
+	},
+	{
+		"id" : "2",
+		"name": "Pro Filt'r Soft Matte Longwear Foundation",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_26086_Fenty_ProFiltrSoftMatteLongwearFoundation100_WEB_6d9373c261a4b8fbd7b092cf6e0382dda022e320_1523778019.png",
+		"price": "52.0"
+	},
+	{
+		"id" : "3",
+		"name": "Shape Tape Contour Concealer",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_1_Product_200109_20Tarte_20Shape_20Tape_20Contour_20Concealer_208b_20Porcelain_20Beige_615a77cf8ab148633493cf90c34132346cd2b88a_1544061337.png",
+		"price": "42.0"
+	},
+	{
+		"id" : "4",
+		"name": "Lip Blossom Lipstick",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_34469_JillStuart_LipBlossomLipstick_43_WEB_2_4f73a260eca493ffe03e54499856bddcfd87f596_1523780196.png",
+		"price": "38.0"
+	},
+	{
+		"id" : "5",
+		"name": "Glow Tonic",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_Pixi_GlowTonic_15ml_407e76bd549674fa88c154fa843e661fcc6421f7_1523777781.png",
+		"price": "9.0"
+	},
+	{
+		"id" : "6",
+		"name": "Stunna Lip Paint Longwear Fluid Lip Color",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_1_Product_202143-Fenty-Beauty-Stunna-Lip-Paint-Longwear-Fluid-Lip-Color-Unlocked_62725319e8de80972681c60b65aa553262b6f955_1549959568.png",
+		"price": "36.0"
+	},
+	{
+		"id" : "7",
+		"name": "Pro Filt'r Instant Retouch Primer",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_1_Product_202137-Fenty-Beauty-Pro-Filtr-Instant-Retouch-Primer-15ml_4ba726fc76eb63d569fc378d5c837f35b5bd4622_1546853996.png",
+		"price": "24.0"
+	},
+	{
+		"id" : "8",
+		"name": "Norvina Eye Shadow Palette",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_1_Product_23315_20Anastasia_20Beverly_20Hills_20Norvina_20Eye_20Shadow_20Palette_0f3114a8a67813759b3cc25f641316ccd0dbd69b_1535105314.png",
+		"price": "75.0"
+	},
+	{
+		"id" : "9",
+		"name": "Obsessions Eyeshadow Palette",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_28912_HudaBeauty_WEB_1db6f942d7aef473a73b0afb6dd6e959c079088e_1523778306.png",
+		"price": "55.0"
+	},
+	{
+		"id" : "10",
+		"name": "Gloss Bomb Universal Lip Luminizer",
+		"imageUrl": "https:\/\/static-reg.lximg.com\/images\/product_images\/closeup_1_Product_193930_20Fenty_20Beauty_20Gloss_20Bomb_20Universal_20Lip_20Luminizer_20Fussy_5381769bec627437c236d42bb2db868e39efcafc_1542358911.png",
+		"price": "31.0"
+	}
+	]
+}

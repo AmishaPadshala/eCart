@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shop/core/utils/app_json.dart';
 import 'package:shop/ui/screen/cartScreen/controller/cart_list_controller.dart';
+
 import '../model/product_model.dart';
 import '../viewModel/product_view_model.dart';
 
@@ -14,14 +15,13 @@ class ProductListController extends GetxController {
 
   CartListController? cartListController;
 
-
   @override
   void onInit() {
+    loadProductJsonFile();
     super.onInit();
   }
 
-
-  loadProductJsonFile()  async{
+  loadProductJsonFile() async {
     cartListController = Get.find<CartListController>();
     Map<String, dynamic> myCarts = cartListController!.getSavedMyCart();
     _ProductViewModelList.clear();
@@ -30,7 +30,7 @@ class ProductListController extends GetxController {
     data[AppJson.productListKey].forEach((element) {
       ProductModel productModel = ProductModel.fromJson(element);
       productModel.cartQuantity = myCarts[productModel.id] ?? 0;
-      productViewModelList.add(ProductViewModel(productModel : productModel));
+      productViewModelList.add(ProductViewModel(productModel: productModel));
     });
     update();
   }
@@ -46,6 +46,4 @@ class ProductListController extends GetxController {
     cartListController!.saveMyCart(productModel);
     update();
   }
-
-
 }

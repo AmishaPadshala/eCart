@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -20,9 +22,56 @@ class _FaceAuthState extends State<FaceAuth> {
   String _authorized = 'Not Authorized';
   @override
   void initState() {
+    hasBiometrics().then(
+      (value) => value
+          ? _authenticate()
+          : showDialog(
+              context: context,
+              builder: (context) {
+                return alertDialog();
+              },
+            ),
+    );
+
     super.initState();
   }
 
+  AlertDialog alertDialog() {
+    return AlertDialog(
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            Icons.error,
+            color: Colors.red,
+          ),
+          Text(
+            "Required security features not available [FeaturesType face & fingerprint]",
+            style: TextStyle(fontSize: 15),
+          ),
+        ],
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Text(
+            "Ok",
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Future<bool> hasBiometrics() async {
+    try {
+      return await auth.canCheckBiometrics;
+    } on PlatformException catch (e) {
+      return false;
+    }
+  }
 
   Future<void> _authenticate() async {
     bool authenticated = false;
@@ -30,10 +79,12 @@ class _FaceAuthState extends State<FaceAuth> {
       setState(() {
         _authorized = 'Authenticating';
       });
+
       authenticated = await auth.authenticate(
+          biometricOnly: false,
+          sensitiveTransaction: false,
           localizedReason: 'Let OS determine authentication method',
-          useErrorDialogs: true,
-          stickyAuth: true);
+          useErrorDialogs: true);
     } on PlatformException catch (e) {
       print(e);
       setState(() {
@@ -47,7 +98,7 @@ class _FaceAuthState extends State<FaceAuth> {
       _authorized;
       if (authenticated) {
         _authorized = 'Authorized';
-        Get.toNamed(BaseScreen.routeName);
+        Get.offAndToNamed(BaseScreen.routeName);
       } else {
         _authorized = "Not Authorized";
       }
@@ -57,52 +108,61 @@ class _FaceAuthState extends State<FaceAuth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              height: getHeight(230),
-              child: Center(
-                child: SafeArea(
-                  child: Column(
-                    children: [
-                      getSizedBox(h: 30),
-                      Text(
-                        "Welcome Back!",
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                      getSizedBox(h: 20),
-                      Text(
-                        "Fast and Secure Login",
-                        style: TextStyle(color: Colors.white, fontSize: 15),
-                      ),
-                      getSizedBox(h: 20),
-                    ],
-                  ),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(40),
-                  bottomLeft: Radius.circular(40),
+      body: Column(
+        children: [
+          Container(
+            height: 230,
+            child: Center(
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      "Welcome Back!",
+                      style: TextStyle(color: Colors.white, fontSize: 30),
+                    ),
+                    getSizedBox(h: 20),
+                    Text(
+                      "Fast and Secure Login",
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ],
                 ),
               ),
             ),
-            getSizedBox(h: 150),
-            GestureDetector(
-              onTap: () {
-                _authenticate();
-              },
-              child: Image.asset(
-                AppIcons.authentication,
-                height: 120,
+            decoration: BoxDecoration(
+              color: Colors.black87,
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(40),
+                bottomLeft: Radius.circular(40),
               ),
             ),
-            getSizedBox(h: 10),
-            Center(child: Text(_authorized)),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 90,
+          ),
+          GestureDetector(
+            onTap: () {
+              hasBiometrics().then(
+                (value) => value
+                    ? _authenticate()
+                    : showDialog(
+                        context: context,
+                        builder: (context) {
+                          return alertDialog();
+                        },
+                      ),
+              );
+            },
+            child: Image.asset(
+              AppIcons.authentication,
+              height: 120,
+            ),
+          ),
+          Center(child: Text(_authorized)),
+        ],
       ),
     );
   }

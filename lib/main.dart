@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shop/ui/screen/auth/face_auth.dart';
+import 'package:shop/ui/screen/basescreen.dart';
 
 import 'core/Navigations/routes.dart';
 import 'core/constants/app_theme.dart';
@@ -14,6 +16,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shop',

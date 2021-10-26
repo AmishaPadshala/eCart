@@ -17,7 +17,6 @@ class ProductListController extends GetxController {
 
   @override
   void onInit() {
-    loadProductJsonFile();
     super.onInit();
   }
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:shop/ui/screen/auth/face_auth.dart';
-import 'package:shop/ui/screen/basescreen.dart';
 
 import 'core/Navigations/routes.dart';
 import 'core/constants/app_theme.dart';

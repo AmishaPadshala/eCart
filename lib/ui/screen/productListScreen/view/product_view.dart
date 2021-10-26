@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop/core/utils/size_config.dart';
 import 'package:shop/ui/screen/productListScreen/controller/product_list_controller.dart';
 import '../viewModel/product_view_model.dart';
 
@@ -29,7 +30,9 @@ class ProductView extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  child: productViewModel.image,
+                  child: Container(
+                    height:getHeight(120),
+                      child: productViewModel.image),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),

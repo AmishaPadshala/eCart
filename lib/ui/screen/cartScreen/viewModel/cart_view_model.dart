@@ -1,6 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shop/core/utils/app_colors.dart';
+import 'package:shop/core/utils/app_images.dart';
+import 'package:shop/core/utils/size_config.dart';
 import 'package:shop/ui/screen/productListScreen/model/product_model.dart';
 
 class CartViewModel {
@@ -9,14 +13,20 @@ class CartViewModel {
   CartViewModel({required this.productModel});
 
 
+
   Widget get image{
     return Container(
-      height: 70,
-      width: 70,
-      child: Image.network(
-        productModel.imageUrl.toString(),
-        fit: BoxFit.fill,
-      ),
+        height: getHeight(70),
+        width: getWidth(70),
+        child: CachedNetworkImage(
+          fit: BoxFit.cover,
+          imageUrl: productModel.imageUrl.toString(),
+          imageBuilder: (context, imageProvider) => Image(image: imageProvider,fit:BoxFit.cover ,),
+          placeholder: (context, url) =>
+              Center(child: CupertinoActivityIndicator()),
+          errorWidget: (context, url, error) =>
+              Image.asset(AppImages.placeHolder, fit: BoxFit.cover,),
+        )
     );
   }
 

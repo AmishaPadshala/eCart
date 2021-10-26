@@ -33,6 +33,7 @@ class CartView extends StatelessWidget {
                     child: Row(
                       children: [
                         cartViewModel.image,
+                        SizedBox(width: 10,),
                         Expanded(
                           child: Column(
                             children: [
